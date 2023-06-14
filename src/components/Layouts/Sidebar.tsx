@@ -12,15 +12,15 @@ const Sidebar = () => {
   return (
     <aside
       id='default-sidebar'
-      class='fixed top-0s left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0'
+      className='fixed top-0s left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0'
       aria-label='Sidebar'
     >
-      <div class='h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800'>
-        <ul class='space-y-2 font-medium'>
+      <div className='h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800'>
+        <ul className='space-y-2 font-medium'>
           <li>
             <Link
               to='/'
-              class='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+              className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -30,20 +30,20 @@ const Sidebar = () => {
                 stroke-width='2'
                 stroke-linecap='round'
                 stroke-linejoin='round'
-                class='w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
+                className='w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
               >
                 <path d='M12 19.75V14.75C12 14.3358 12.3358 14 12.75 14H17V19.75C17 20.1642 16.6642 20.5 16.25 20.5H7.75C7.33579 20.5 7 20.1642 7 19.75V14H11.25C11.6642 14 12 14.3358 12 14.75V19.75Z'></path>
                 <path d='M19 13.75L12 8.75L5 13.75'></path>
                 <line x1='12' y1='8.75' x2='12' y2='14.75'></line>
               </svg>
-              <span class='ml-3'>Inicio</span>
+              <span className='ml-3'>Inicio</span>
             </Link>
           </li>
           {user && (
             <li>
               <Link
                 to='/searcher'
-                class='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
               >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -53,12 +53,12 @@ const Sidebar = () => {
                   stroke-width='2'
                   stroke-linecap='round'
                   stroke-linejoin='round'
-                  class='w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
+                  className='w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
                 >
                   <circle cx='11' cy='11' r='8'></circle>
                   <line x1='21' y1='21' x2='16.65' y2='16.65'></line>
                 </svg>
-                <span class='ml-3'>Buscar</span>
+                <span className='ml-3'>Buscar</span>
               </Link>
             </li>
           )}
@@ -66,11 +66,11 @@ const Sidebar = () => {
             <li>
               <Link
                 to='/dashboard'
-                class='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
               >
                 <svg
                   aria-hidden='true'
-                  class='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
+                  className='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -81,7 +81,7 @@ const Sidebar = () => {
                     clip-rule='evenodd'
                   ></path>
                 </svg>
-                <span class='flex-1 ml-3 whitespace-nowrap'>Usuarios</span>
+                <span className='flex-1 ml-3 whitespace-nowrap'>Usuarios</span>
               </Link>
             </li>
           )}
@@ -90,11 +90,11 @@ const Sidebar = () => {
             <li>
               <Link
                 to='/login'
-                class='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
               >
                 <svg
                   aria-hidden='true'
-                  class='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
+                  className='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -105,7 +105,7 @@ const Sidebar = () => {
                     clip-rule='evenodd'
                   ></path>
                 </svg>
-                <span class='flex-1 ml-3 whitespace-nowrap'>
+                <span className='flex-1 ml-3 whitespace-nowrap'>
                   Iniciar sesion
                 </span>
               </Link>
@@ -116,11 +116,11 @@ const Sidebar = () => {
             <li>
               <Link
                 to='/registro'
-                class='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
               >
                 <svg
                   aria-hidden='true'
-                  class='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
+                  className='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -131,7 +131,7 @@ const Sidebar = () => {
                     clip-rule='evenodd'
                   ></path>
                 </svg>
-                <span class='flex-1 ml-3 whitespace-nowrap'>Registro</span>
+                <span className='flex-1 ml-3 whitespace-nowrap'>Registro</span>
               </Link>
             </li>
           )}
@@ -139,12 +139,12 @@ const Sidebar = () => {
             <li>
               <button
                 onClick={() => handleLogout()}
-                href='#'
-                class='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+               
+                className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
               >
                 <svg
                   aria-hidden='true'
-                  class='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
+                  className='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -155,7 +155,7 @@ const Sidebar = () => {
                     clip-rule='evenodd'
                   ></path>
                 </svg>
-                <span class='flex-1 ml-3 whitespace-nowrap'>Cerrar sesion</span>
+                <span className='flex-1 ml-3 whitespace-nowrap'>Cerrar sesion</span>
               </button>
             </li>
           )}

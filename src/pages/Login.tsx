@@ -10,13 +10,13 @@ import { useState } from 'react'
 
 const Login = () => {
   const { login, user } = useAuth()
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState<boolean>(false)
   const navigate = useNavigate()
   const { register, handleSubmit } = useForm({
     shouldUseNativeValidation: true
   })
 
-  const onSubmit = async data => {
+  const onSubmit = async (data: any) => {
     setLoading(true)
     login(data.email, data.password)
       .then(() => {

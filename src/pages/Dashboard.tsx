@@ -34,9 +34,9 @@ const Dashboard = () => {
   })
   const [modalIsOpen, setIsOpen] = React.useState(false)
   const [modalIsOpenEdit, setIsOpenEdit] = React.useState(false)
-  const swalWithBootstrapButtons = Swal.mixin()
+  const swalWithBootstrapButtons = Swal.mixin({})
 
-  const handleSubmit = data => {
+  const handleSubmit = (data: any) => {
     signup(data.email, data.password)
       .then(async () => {
         await addDoc(usersRef, {
@@ -51,7 +51,7 @@ const Dashboard = () => {
       .catch(firestoreResponses)
   }
 
-  const handleSubmitEdit = data => {
+  const handleSubmitEdit = (data: any) => {
     setDoc(doc(db, 'usuarios', userEdit.id), {
       name: data.name,
       password: data.password,
@@ -69,7 +69,7 @@ const Dashboard = () => {
     setLoading(true)
     getDocs(usersRef)
       .then(response => {
-        let users = []
+        let users: any = []
         response.forEach(doc => {
           users.push({
             id: doc.id,
@@ -84,7 +84,7 @@ const Dashboard = () => {
       })
   }
 
-  const editUser = async userId => {
+  const editUser = async (userId: string) => {
     getDoc(doc(db, 'usuarios', userId))
       .then(response => {
         if (!response.exists())
@@ -100,7 +100,8 @@ const Dashboard = () => {
       .catch(firestoreResponses)
   }
 
-  const deleteUser = async userId => {
+  const deleteUser = async (userId: string) => {
+    console.log(userId)
     const result = await swalWithBootstrapButtons.fire({
       title: '¿Estás seguro?',
       text: 'Este usuario se eliminará',
@@ -131,12 +132,12 @@ const Dashboard = () => {
         <div></div>
         <ModalTemplate
           openModal={modalIsOpen}
-          setOpenModal={setIsOpen}
+          setOpenModal={() => setIsOpen(true)}
           content={<LoginRegistrationForm handleSubmitData={handleSubmit} />}
         />
         <ModalTemplate
           openModal={modalIsOpenEdit}
-          setOpenModal={setIsOpenEdit}
+          setOpenModal={() => setIsOpenEdit(true)}
           content={
             <LoginRegistrationForm
               edit
@@ -149,16 +150,20 @@ const Dashboard = () => {
       <div className='flex justify-end'>
         <button
           className='p-2 bg-gray-900 border-radius my-2 text-zinc-100 hover:bg-gray-800'
-          onClick={setIsOpen}
+          onClick={() => setIsOpen(true)}
         >
           Nuevo usuario
         </button>
       </div>
 
       {users.length > 0 ? (
-        <UsersTable users={users} editUser={editUser} deleteUser={deleteUser} />
+        <UsersTable
+          users={users}
+          editUser={id => editUser(id)}
+          deleteUser={id => deleteUser(id)}
+        />
       ) : loading ? (
-        <Spin width='20' />
+        <Spin width='40' />
       ) : (
         <div className='text-center text-4xl'>
           No se han encontrado usuarios...

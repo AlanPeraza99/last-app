@@ -1,4 +1,7 @@
-const Spin = ({ width }) => {
+const Spin = ({ width }: { width?: string }) => {
+  if (width) {
+    console.log('existe el width')
+  }
   return (
     <div className='flex items-center justify-center'>
       <svg

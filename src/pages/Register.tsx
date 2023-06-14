@@ -9,7 +9,7 @@ import { useState } from 'react'
 import Spin from '../components/Spin'
 
 const Register = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState<boolean>(false)
   const { signup } = useAuth()
   const navigate = useNavigate()
   const usersRef = collection(db, 'usuarios')
@@ -17,7 +17,7 @@ const Register = () => {
     shouldUseNativeValidation: true
   })
 
-  const onSubmit = async data => {
+  const onSubmit = async (data:any) => {
     setLoading(true)
     signup(data.email, data.password)
       .then(async () => {

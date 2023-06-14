@@ -12,9 +12,10 @@ const Home = () => {
   const [message, setMessage] = useState(
     'Busque alguna canción, artista o album...'
   )
-  const [searchResults, setSearchResults] = useState([])
-  const [openModal, setOpenModal] = useState(false)
-  const [modalContent, setModalContent] = useState('')
+  const [searchResults, setSearchResults] = useState([]);
+
+  const [openModal, setOpenModal] = useState<boolean>(false)
+  const [modalContent, setModalContent] = useState<any>('')
   const api = process.env.REACT_APP_LAST_APP_API
 
   const handleSearch = async () => {
@@ -23,7 +24,7 @@ const Home = () => {
     setLoading(true)
     let response
     setSearchResults([])
-    let results = []
+    let results:any = []
     response = await axios.get(
       `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${search}&api_key=${api}&format=json`
     )
@@ -43,7 +44,7 @@ const Home = () => {
     }
   }
 
-  const openModalContent = content => {
+  const openModalContent = (content:any)=> {
     setOpenModal(true)
     setModalContent(content)
   }
@@ -87,9 +88,9 @@ const Home = () => {
       </div>
       {searchResults.length > 0 ? (
         <div className=' bg-opacity-100 h-full text-center my-4 '>
-          <div class='grid grid-cols-3 gap-4 mb-4'></div>
+          <div className='grid grid-cols-3 gap-4 mb-4'></div>
           <div className='grid grid-cols-3 '>
-            {searchResults.map(function (element, index) {
+            {searchResults?.map(function (element:any) {
               return (
                 <MusicCard
                   spaceBetween
@@ -122,7 +123,7 @@ const Home = () => {
         </div>
       ) : (
         <div className='text-center my-10 text-slate-900 text-3xl'>
-          {loading ? <Spin width={20} /> : message}
+          {loading ? <Spin width='40' /> : message}
         </div>
       )}
     </div>

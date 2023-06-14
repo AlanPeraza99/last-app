@@ -1,10 +1,16 @@
 import Modal from 'react-modal'
-
-const ModalTemplate = ({ content, openModal,setOpenModal,width,height }) => {
+import { ModalProps } from '../interfaces/ModalProps'
+const ModalTemplate:React.FC <ModalProps>=({
+  content,
+  openModal,
+  setOpenModal,
+  width,
+  height,
+}) => {
   return (
     <Modal
       isOpen={openModal}
-      onRequestClose={() => setOpenModal(false)}
+      onRequestClose={() => setOpenModal({value: false})}
       style={{
         content: {
           top: '50%',

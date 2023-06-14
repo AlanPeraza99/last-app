@@ -1,4 +1,7 @@
-import React from 'react'
+import { useState } from 'react'
+import ReactAudioPlayer from 'react-audio-player'
+import ModalTemplate from '../components/Modal'
+import MusicCard from '../components/MusicCard'
 import rock from '../images/rock.jpeg'
 import rock2 from '../images/rock2.jpeg'
 import peso_pluma from '../images/peso_pluma2.jpeg'
@@ -6,63 +9,69 @@ import shakira from '../images/shakira.webp'
 import pop from '../images/pop.jpeg'
 import disc from '../images/disc.webp'
 import IA from '../images/IA.jpeg'
-import weekendmp3 from '../music/WEEKEND.mp3'
 import weekend from '../images/weekend.webp'
-import megadeth from '../music/MEGADETH.mp3'
-import guns from '../music/GUNS.mp3'
-import queen from '../music/QUEEN.mp3'
-import plumaMP3 from '../music/PLUMA.mp3'
-import shakiraMP3 from '../music/SHAKIRA.mp3'
 import IAimage1 from '../images/IA/image1.jpeg'
 import IAimage2 from '../images/IA/image2.jpg'
 import IAimage3 from '../images/IA/image3.jpg'
-import iaCover1 from '../music/IA_COVERS/IACOVER1.mp3'
-import iaCover2 from '../music/IA_COVERS/IACOVER2.mp3'
-import iaCover3 from '../music/IA_COVERS/IACOVER3.mp3'
-import ReactAudioPlayer from 'react-audio-player'
-import ModalTemplate from '../components/Modal'
-import MusicCard from '../components/MusicCard'
 
 const Home = () => {
-  const [openModal, setOpenModal] = React.useState(false)
-  const [title, setTitle] = React.useState('')
-  const [music, setMusic] = React.useState('')
-  const [image, setImage] = React.useState('')
+  const [openModal, setOpenModal] = useState(false)
+  const [title, setTitle] = useState<string>('')
+  const [music, setMusic] = useState<string>('')
+  const [image, setImage] = useState<string>('')
+
+  const artistsMusic = {
+    MEGADETH: 'Megadeth',
+    QUEEN: 'Queen',
+    WEEKEND: 'Weekend',
+    GUNS: 'Guns',
+    PLUMA: 'Pluma',
+    SHAKIRA: 'Shakira'
+  }
+
   const iaCovers = [
     {
       artist: 'Rick Sanchez - La noche mas linda del mundo',
       image: IAimage1,
-      song: iaCover1
+      song: '../music/IA_COVERS/IACOVER1.mp3'
     },
-    { artist: 'Michael Jackson - Atrevete', image: IAimage2, song: iaCover2 },
-    { artist: 'AMLO - Vete ya', image: IAimage3, song: iaCover3 }
+    {
+      artist: 'Michael Jackson - Atrevete',
+      image: IAimage2,
+      song: '../music/IA_COVERS/IACOVER2.mp3'
+    },
+    {
+      artist: 'AMLO - Vete ya',
+      image: IAimage3,
+      song: '../music/IA_COVERS/IACOVER3.mp3'
+    }
   ]
 
-  const playSong = artist => {
+  const playSong = (artist: string) => {
     setTitle(artist)
     switch (artist) {
-      case 'MEGADETH':
-        setMusic(megadeth)
+      case artistsMusic.MEGADETH:
+        setMusic('../music/MEGADETH.mp3')
         setImage(rock)
         break
-      case 'QUEEN':
-        setMusic(queen)
+      case artistsMusic.QUEEN:
+        setMusic('../music/QUEEN.mp3')
         setImage(pop)
         break
-      case 'GUNS':
-        setMusic(guns)
+      case artistsMusic.GUNS:
+        setMusic('../music/GUNS.mp3')
         setImage(rock2)
         break
-      case 'WEEKEND':
-        setMusic(weekendmp3)
+      case artistsMusic.WEEKEND:
+        setMusic('../music/WEEKEND.mp3')
         setImage(weekend)
         break
-      case 'PLUMA':
-        setMusic(plumaMP3)
+      case artistsMusic.PLUMA:
+        setMusic('../music/PLUMA.mp3')
         setImage(peso_pluma)
         break
-      case 'SHAKIRA':
-        setMusic(shakiraMP3)
+      case artistsMusic.SHAKIRA:
+        setMusic('../music/SHAKIRA.mp3')
         setImage(shakira)
         break
       default:
@@ -76,10 +85,12 @@ const Home = () => {
   }
 
   return (
-    <div class='p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 h-full'>
+    <div className='p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 h-full'>
       <ModalTemplate
         openModal={openModal}
-        setOpenModal={setOpenModal}
+        setOpenModal={() => {
+          setOpenModal(false)
+        }}
         content={
           <div className='relative w-full mx-auto text-center space-y-4 '>
             <p className='font-bold text-2xl'>{title}</p>
@@ -88,11 +99,7 @@ const Home = () => {
               src={disc}
               className='animate-spin mx-auto h-40 w-40 py-auto'
             />
-            <img
-              alt=''
-              src={image}
-              className='object-cover mx-auto h-40 w-40 py-auto'
-            />
+            <img alt='' src={image} className='object-cover mx-auto h-40' />
             <div className='mx-auto'>
               <ReactAudioPlayer
                 className='mx-auto'
@@ -104,43 +111,43 @@ const Home = () => {
           </div>
         }
       />
-      <div class='grid grid-cols-3 gap-4 mb-4'>
+      <div className='grid grid-cols-3 gap-4 mb-4'>
         <MusicCard
-          title={'MEGADETH'}
+          title={'Megadeth'}
           image={rock}
-          playSong={() => playSong('MEGADETH')}
+          playSong={() => playSong('Megadeth')}
         />
         <MusicCard
-          title={'QUEEN'}
+          title={'Queen'}
           image={pop}
-          playSong={() => playSong('QUEEN')}
+          playSong={() => playSong('Queen')}
         />
         <MusicCard
-          title={'GUNS'}
+          title={'Guns'}
           image={rock2}
-          playSong={() => playSong('GUNS')}
+          playSong={() => playSong('Guns')}
         />
       </div>
 
       <MusicCard
-        title={'WEEKEND'}
+        title={'Weekend'}
         height={'h-48'}
         image={weekend}
-        playSong={() => playSong('WEEKEND')}
+        playSong={() => playSong('Weekend')}
       />
 
-      <div class='grid grid-cols-2 gap-4 mb-4'>
+      <div className='grid grid-cols-2 gap-4 mb-4'>
         <MusicCard
-          title={'PLUMA'}
+          title={'Pluma'}
           height={'h-28'}
           image={peso_pluma}
-          playSong={() => playSong('PLUMA')}
+          playSong={() => playSong('Pluma')}
         />
         <MusicCard
-          title={'SHAKIRA'}
+          title={'Shakira'}
           height={'h-28'}
           image={shakira}
-          playSong={() => playSong('SHAKIRA')}
+          playSong={() => playSong('Shakira')}
         />
       </div>
 

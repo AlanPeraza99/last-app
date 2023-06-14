@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
+import { LoginRegistrationFormProps } from '../interfaces/LoginRegistrationFormProps'
 
-const LoginRegistrationForm = ({ user, edit, handleSubmitData }) => {
+const LoginRegistrationForm:React.FC<LoginRegistrationFormProps> =({ user, edit, handleSubmitData }) => {
   const { register, handleSubmit } = useForm({
     shouldUseNativeValidation: true
   })
